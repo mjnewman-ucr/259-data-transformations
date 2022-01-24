@@ -62,6 +62,8 @@ ifelse(NA %in% x, "x contains a missing value", "x does not contain a missing va
 
 # Each dplyr function uses a similar structure
 
+library(tidyverse)
+
 # Arrange
 
 ds <- starwars #loads built-in star wars database
@@ -122,6 +124,7 @@ ds_sorted_filtered <- filter(ds_sorted, height < 70)
 ds_sorted_filtered
 
 # Introducing the pipe operator
+#shift command m
 
 ds <- starwars
 ds <- ds %>% select(name, height, eye_color)
@@ -130,6 +133,7 @@ ds <- ds %>%
   select(name, eye_color) %>% 
   arrange(eye_color) %>% 
   filter(eye_color == "blue")
+ds
 
 # These are equivalent but <- is most conventional/common
 
@@ -165,6 +169,7 @@ ds <- ds %>%
   filter(hair_color %in% c("blond", NA)) %>% 
   mutate(hair_color = ifelse(is.na(hair_color),"no hair", hair_color),
          mass = ifelse(mass > 1000, "huge", "not huge"))
+ds
 
 # Tricky, common task: Changing some but not all values within a column
 
